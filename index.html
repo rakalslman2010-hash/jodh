@@ -45,7 +45,7 @@ a.card{display:block;color:inherit;text-decoration:none}
 .rk{text-align:center;padding:10px 4px;margin:0;border-radius:14px;color:#fff;font-weight:800;font-size:22px;line-height:1.2}.rk small{display:block;font-size:11px;font-weight:500;opacity:.95}
 h3{margin:0 0 10px;font-size:17px}
 label.f{display:block;font-size:13px;color:var(--mt);margin:0 0 4px}
-input[type=text],input[type=date],input[type=number],input[type=url],textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--bg);border:1.5px solid var(--ln);border-radius:12px;padding:10px 12px;margin-bottom:12px}
+input[type=text],input[type=password],input[type=date],input[type=number],input[type=url],textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--bg);border:1.5px solid var(--ln);border-radius:12px;padding:10px 12px;margin-bottom:12px}
 input:focus,textarea:focus,select:focus,button:focus-visible,a:focus-visible{outline:2.5px solid var(--gold);outline-offset:1px}
 .sticky{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--gd);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
 .sticky .big{font-size:22px;color:var(--gold)}.sticky small{opacity:.8;font-weight:500;margin-inline-start:8px}
@@ -63,7 +63,7 @@ input[type=range]{width:100%;accent-color:var(--g);height:34px;direction:ltr;mar
 details{border-top:1px solid var(--ln);padding:8px 0}summary{cursor:pointer;font-weight:700;display:flex;justify-content:space-between}
 .row{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}.row input{margin:0}
 .sig{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px;text-align:center;color:var(--mt)}.sig div{border-top:1px solid var(--ln);padding-top:6px;margin-top:26px}
-.kb{display:inline-block;padding:1px 9px;border-radius:99px;font-size:11px;font-weight:700;vertical-align:middle;white-space:nowrap}.kb.adm{background:var(--g);color:#fff}.kb.edu{background:var(--gold);color:#1b1608}.kb.old{background:var(--ln);color:var(--mt)}
+.kb{display:inline-block;padding:1px 9px;border-radius:99px;font-size:11px;font-weight:700;vertical-align:middle;white-space:nowrap}.kb.adm{background:var(--g);color:#fff}.kb.edu{background:var(--gold);color:#1b1608}.kb.old{background:var(--ln);color:var(--mt)}.kb.wt{background:var(--or);color:#fff}
 nav.tabs{position:fixed;bottom:0;left:0;right:0;background:var(--sf);border-top:1px solid var(--ln);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:40}
 nav.tabs div{display:flex;max-width:600px;margin:0 auto}
 nav.tabs a{flex:1;text-align:center;text-decoration:none;color:var(--mt);font-size:11px;font-weight:700;padding:5px 0;border-radius:12px}
@@ -82,11 +82,12 @@ nav.tabs a.on{color:var(--g)}
 </div>
 <nav class="tabs" id="tabs"><div>
 <a href="#home" data-t="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>الرئيسية</a>
+<a href="#tasks" data-t="tasks"><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M9 14l2 2 4-4"/></svg>المهام</a>
 <a href="#halaqat" data-t="halaqat"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6M16 5a3 3 0 010 6M18 14c2 .7 3 2.6 3 6"/></svg>الحلقات</a>
 <a href="#sups" data-t="sups"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3-6 7-6s7 2.4 7 6M17.5 4.5l1.5 1.5 3-3"/></svg>المشرفون</a>
 <a href="#visits" data-t="visits"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h4"/></svg>السجل</a>
 <a href="#reports" data-t="reports"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-6M2 20h20"/></svg>التقارير</a>
-<a href="#settings" data-t="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>الإعدادات</a>
+<a href="#settings" data-t="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></svg>حسابي</a>
 </div></nav>
 <script>
 /* ضع رابط قاعدة Firebase هنا مرة واحدة فقط (يحفظ البيانات على الإنترنت لتصل لكل الأجهزة حتى لو غير متصلة وقت التعديل).
@@ -106,7 +107,7 @@ function ask(msg,ok){var o=document.createElement("div");o.style.cssText="positi
  o.innerHTML='<div class="card" style="max-width:340px;width:100%;margin:0"><p style="margin:0 0 16px;font-weight:700;line-height:1.7">'+esc(msg)+'</p><div class="g2"><button class="btn del" data-m="y">تأكيد</button><button class="btn alt" data-m="n">إلغاء</button></div></div>';
  o.addEventListener("click",function(e){var m=e.target.dataset.m;if(m||e.target===o){o.remove();if(m==="y"){ok();toast("تم")}}});document.body.appendChild(o)}
 function lsGet(){try{return JSON.parse(localStorage.getItem("jh2"))||{}}catch(e){return{}}}
-function lsSet(){try{localStorage.setItem("jh2",JSON.stringify({room:P.room,name:P.name}))}catch(e){}}
+function lsSet(){try{localStorage.setItem("jh2",JSON.stringify({room:P.room,name:P.name,me:P.me}))}catch(e){}}
 
 /* ===== البنود الافتراضية (من النموذجين) ===== */
 var TEACH=["التمكن العالي من التسميع ومتابعة النص بدقة (غيباً / نظراً)","القدرة على اكتشاف الأخطاء الفورية ومعالجتها دون تأخير","جودة وسرعة تصحيح أحكام التجويد والأخطاء الجلية والخفية","العدالة والمساواة بين الطلاب في الاهتمام ووقت التسميع","سرعة وحيوية إدارة الحلقة ومنع حدوث أي فراغ أو فوضى","متابعة جميع الطلاب المشاركين والمنتظرين بشكل مستمر","القدرة على ضبط الحلقة وفرض الهيبة بأسلوب تربوي راقٍ","التحفيز والتشجيع الفعال والمناسب لطبيعة ومستوى كل طالب","جودة الخطة اليومية ووضوح الأهداف المرتجاة للدرس","شخصية المعلم القيادية، هيبته، وتأثيره الإيجابي على الطلاب"];
@@ -131,13 +132,13 @@ function nc(c){c=c||defCfg();return{sections:arr(c.sections).map(function(s){ret
 
 /* ===== الحالة والمزامنة (برقم الغرفة فقط، اتصال مباشر بين الأجهزة) ===== */
 var P=lsGet(),legacy=P.c;delete P.c;delete P.q;delete P.url;
-var S={halaqat:{},visits:{},supervisors:{},cfg:nc()};
+var S={halaqat:{},visits:{},supervisors:{},tasks:{},cfg:nc()};
 var M={},ST="",TXT="",F={},R=[],peer=null,conns=[],hostConn=null,isHost=false,retryT=null;
-var busy={new:1,hedit:1,sedit:1,cfg:1,setup:1};
+var busy={new:1,hedit:1,sedit:1,cfg:1,setup:1,tedit:1,login:1,settings:1,t:1};
 function persist(){}
 function online(){return !!P.room}
 function setSt(k,t){if(k!==undefined&&k!==null)ST=k;if(t!==undefined)TXT=t;var c=document.getElementById("chip");if(!c)return;c.className="chip "+(P.room?ST:"");c.lastChild.textContent=!P.room?"محلي":(TXT||"جارٍ الاتصال…")}
-function rebuild(){var n={halaqat:{},visits:{},supervisors:{},cfg:null};Object.keys(M).forEach(function(k){var e=M[k];if(!e||e.v===null||e.v===undefined)return;if(k==="cfg"){n.cfg=e.v}else{var i=k.indexOf("/"),g=k.slice(0,i),id=k.slice(i+1);if(n[g])n[g][id]=e.v}});S={halaqat:n.halaqat,visits:n.visits,supervisors:n.supervisors,cfg:nc(n.cfg)}}
+function rebuild(){var n={halaqat:{},visits:{},supervisors:{},tasks:{},cfg:null};Object.keys(M).forEach(function(k){var e=M[k];if(!e||e.v===null||e.v===undefined)return;if(k==="cfg"){n.cfg=e.v}else{var i=k.indexOf("/"),g=k.slice(0,i),id=k.slice(i+1);if(n[g])n[g][id]=e.v}});S={halaqat:n.halaqat,visits:n.visits,supervisors:n.supervisors,tasks:n.tasks,cfg:nc(n.cfg)}}
 function mk_(){return "jh-m-"+P.room}
 function saveM(){try{localStorage.setItem(mk_(),JSON.stringify(M))}catch(e){}}
 function loadM(){try{M=JSON.parse(localStorage.getItem(mk_())||"{}")||{}}catch(e){M={}}
@@ -145,7 +146,7 @@ function loadM(){try{M=JSON.parse(localStorage.getItem(mk_())||"{}")||{}}catch(e
   Object.keys(legacy.halaqat||{}).forEach(function(k){M["halaqat/"+k]={v:legacy.halaqat[k],ts:1}});
   Object.keys(legacy.visits||{}).forEach(function(k){M["visits/"+k]={v:legacy.visits[k],ts:1}});
   if(legacy.cfg)M.cfg={v:legacy.cfg,ts:1};saveM()}
- legacy=null;rebuild()}
+ legacy=null;rebuild();seed();rebuild()}
 function mergeIn(rem){var ch=false;if(!rem)return false;Object.keys(rem).forEach(function(k){var r=rem[k];if(r&&typeof r.ts==="number"&&(!M[k]||r.ts>M[k].ts)){M[k]=r;ch=true}});if(ch){rebuild();saveM();if(!busy[R[0]])render()}return ch}
 function push(msg){if(FIREBASE_URL){schedule();return}if(isHost)conns.forEach(function(c){try{c.send(msg)}catch(e){}});else if(hostConn&&hostConn.open){try{hostConn.send(msg)}catch(e){}}}
 function w(p,v){var e={v:v===null||v===undefined?null:JSON.parse(JSON.stringify(v)),ts:Date.now()},o={};o[p]=e;M[p]=e;rebuild();saveM();push({t:"state",m:o})}
@@ -197,7 +198,7 @@ function tryClient(){
 }
 function startSync(){
  stopSync();if(ES){ES.close();ES=null}
- if(!P.room){S={halaqat:{},visits:{},supervisors:{},cfg:nc()};return}
+ if(!P.room){S={halaqat:{},visits:{},supervisors:{},tasks:{},cfg:nc()};return}
 loadM();
  if(FIREBASE_URL){setSt("","جارٍ الاتصال…");cloudSync();listen();return}
  if(typeof Peer==="undefined"){setSt("err","محفوظ على هذا الجهاز فقط (تعذّر الاتصال)");return}
@@ -211,11 +212,11 @@ document.addEventListener("visibilitychange",function(){if(FIREBASE_URL&&!docume
 function calc(cfg,s){var got=0,max=0,secs=cfg.sections.map(function(c){var g=0,m=0;c.items.forEach(function(i){g+=+s[i.id]||0;m+=+i.max});if(c.inPct){got+=g;max+=m}return{id:c.id,t:c.title,g:g,m:m,p:c.inPct}});return{secs:secs,got:got,max:max,pct:max?Math.round(got/max*1000)/10:0}}
 function risk(p){return p>=90?{k:"g",c:"var(--ok)",t:"أخضر",d:"مستقرة"}:p>=75?{k:"y",c:"var(--yl)",t:"أصفر",d:"متابعة زيارة أسبوعين"}:p>=60?{k:"o",c:"var(--or)",t:"برتقالي",d:"خطة عاجلة"}:{k:"r",c:"var(--bad)",t:"أحمر",d:"مخاطرة عالية"}}
 function vp(v){return calc(nc(v.cfg),v.s||{}).pct}
-function allV(){return Object.keys(S.visits).map(function(k){return S.visits[k]}).sort(function(a,b){return b.ts-a.ts})}
+function allV(){return Object.keys(S.visits).map(function(k){return S.visits[k]}).filter(vis).sort(function(a,b){return b.ts-a.ts})}
 function visitsOf(h){return allV().filter(function(v){return v.hid===h})}
-function sList(k){return Object.keys(S.supervisors).map(function(i){return S.supervisors[i]}).filter(function(x){return x&&(!k||x.kind===k)}).sort(function(a,b){return a.name>b.name?1:-1})}
+function sList(k){return Object.keys(S.supervisors).map(function(i){return S.supervisors[i]}).filter(function(x){return x&&(!k||entOf(x)==="both"||entOf(x)===k)}).sort(function(a,b){return a.name>b.name?1:-1})}
 function visitsOfS(sp){return allV().filter(function(v){return v.sid?v.sid===sp.id:(v.sup||"")===sp.name})}
-function supL(v){return v.sid&&S.supervisors[v.sid]?'<a href="#s/'+v.sid+'" style="color:var(--g);font-weight:700">'+esc(v.sup||"-")+'</a>':esc(v.sup||"-")}
+function supL(v){return v.sid&&S.supervisors[v.sid]&&can("sup")?'<a href="#s/'+v.sid+'" style="color:var(--g);font-weight:700">'+esc(v.sup||"-")+'</a>':esc(v.sup||"-")}
 function lastOf(h,k){return visitsOf(h).filter(function(v){return kd(v)===k})[0]}
 function cfgOf(k){return{sections:S.cfg.sections.filter(function(s){return s.k===k})}}
 function hList(){return Object.keys(S.halaqat).map(function(k){return S.halaqat[k]}).sort(function(a,b){return a.name>b.name?1:-1})}
@@ -230,7 +231,7 @@ function pcd(p){return '<span class="pc" style="color:'+risk(p).c+'">'+p+'<small
 function rng(){var f=RF.from,t=RF.to;if(f&&t&&f>t){var z=f;f=t;t=z}return{f:f,t:t}}
 function repVisits(){var r=rng();return allV().filter(function(v){return(RF.h==="all"||v.hid===RF.h)&&(!r.f||v.date>=r.f)&&(!r.t||v.date<=r.t)})}
 function ofKind(vs,k){return vs.filter(function(v){return kd(v)===k})}
-function kindsOf(vs){return["adm","edu","old"].filter(function(x){return x!=="old"||ofKind(vs,"old").length})}
+function kindsOf(vs){return["adm","edu","old"].filter(function(x){return x==="old"?ofKind(vs,"old").length:ak().indexOf(x)>=0})}
 function secAvg(vs){var m={},o=[];vs.forEach(function(v){calc(nc(v.cfg),v.s||{}).secs.forEach(function(z){if(!z.m)return;var e=m[z.t];if(!e){e=m[z.t]={t:z.t,a:[]};o.push(e)}e.a.push(z.g/z.m*100)})});return o.map(function(e){return{t:e.t,p:avg1(e.a)}})}
 function byH(vs,withEmpty){var m={},o=[];
  vs.forEach(function(v){var e=m[v.hid];if(!e){var hh=S.halaqat[v.hid]||{};e=m[v.hid]={hid:v.hid,live:!!S.halaqat[v.hid],name:hh.name||v.hn,teacher:hh.teacher||v.ht||"",vs:[]};o.push(e)}e.vs.push(v)});
@@ -287,25 +288,25 @@ function printPeriod(){if(RF.h!=="all"&&!S.halaqat[RF.h])RF.h="all";
 
 /* ===== العروض ===== */
 function vHome(){var hs=hList(),vs=allV(),need=[],boxes="";
- ["adm","edu"].forEach(function(k){var cnt={g:0,y:0,o:0,r:0};
+ ak().forEach(function(k){var cnt={g:0,y:0,o:0,r:0};
   hs.forEach(function(h){var l=lastOf(h.id,k);if(!l){need.push([h,"لم تتم زيارتها ("+KINDS[k].n+")","var(--mt)"]);return}var p=vp(l),r=risk(p);cnt[r.k]++;if(r.k==="o"||r.k==="r")need.push([h,KINDS[k].n+": "+r.d+" ("+Math.round(p)+"%)",r.c])});
   boxes+='<div class="card"><div class="hi" style="margin-bottom:10px"><h3 style="margin:0">مستوى المخاطرة</h3>'+kb(k)+'</div><div class="g4"><div class="rk" style="background:var(--ok)">'+cnt.g+'<small>مستقرة</small></div><div class="rk" style="background:var(--yl)">'+cnt.y+'<small>متابعة</small></div><div class="rk" style="background:var(--or)">'+cnt.o+'<small>عاجلة</small></div><div class="rk" style="background:var(--bad)">'+cnt.r+'<small>عالية</small></div></div></div>'});
  var avg=vs.length?Math.round(sum(vs.map(vp))/vs.length):0;
- return '<main><div class="card hero"><h2>أهلاً بك</h2><p>غرفة المشرفين رقم '+esc(P.room)+(online()?" · البيانات مشتركة مع الجميع":" · وضع محلي بدون مزامنة")+'</p><div class="g2"><a class="btn" href="#new/">زيارة جديدة</a><a class="btn alt" style="color:#fff;border-color:#fff" href="#hedit/new">إضافة حلقة</a></div></div>'+
+ return '<main><div class="card hero"><h2>أهلاً '+esc(ME().name)+'</h2><p>غرفة المشرفين رقم '+esc(P.room)+(online()?" · البيانات مشتركة مع الجميع":" · وضع محلي بدون مزامنة")+'</p><div class="g2"><a class="btn" href="#new/">زيارة جديدة</a>'+(can("hal")?'<a class="btn alt" style="color:#fff;border-color:#fff" href="#hedit/new">إضافة حلقة</a>':'<a class="btn alt" style="color:#fff;border-color:#fff" href="#tasks">مهامي</a>')+'</div></div>'+
  '<div class="g3" style="margin-bottom:12px"><div class="card stat"><b>'+hs.length+'</b><span>حلقة</span></div><div class="card stat"><b>'+vs.length+'</b><span>زيارة</span></div><div class="card stat"><b>'+avg+'%</b><span>متوسط النتائج</span></div></div>'+
- boxes+
+ taskCard()+boxes+
  '<a class="card hi" href="#reports"><div><b>التقارير والمتوسطات</b><br><small>متوسط الزيارات لكل حلقة ولكامل الحلقات، وطباعة تقرير لفترة محددة</small></div><span>‹</span></a>'+
  '<div class="card"><h3>حلقات تحتاج اهتماماً</h3>'+(need.length?need.map(function(n){return '<a href="#h/'+n[0].id+'" style="text-decoration:none;color:inherit" class="hi"><div><b>'+esc(n[0].name)+'</b><br><small>'+esc(n[0].teacher)+'</small></div><span style="color:'+n[2]+';font-weight:700;font-size:13px">'+n[1]+'</span></a><hr style="border:0;border-top:1px solid var(--ln);margin:10px 0">'}).join("").replace(/<hr[^>]*>$/,""):'<div class="empty" style="padding:8px">'+(hs.length?"كل الحلقات بحالة جيدة":"أضف أول حلقة لتبدأ")+'</div>')+'</div></main>'}
 
 function vHalaqat(){var hs=hList();
  function mini(t,v){return '<div style="text-align:center"><small style="display:block;font-size:11px">'+t+'</small>'+(v?pcb(vp(v)):'<small>—</small>')+'</div>'}
- return '<main>'+(hs.length?hs.map(function(h){var vs=visitsOf(h.id);return '<a class="card hi" href="#h/'+h.id+'"><div><b>'+esc(h.name)+'</b><br><small>'+esc(h.teacher)+(h.count?" · "+esc(h.count)+" طالب":"")+' · '+vs.length+' زيارة</small></div><div style="display:flex;gap:6px;align-items:center">'+mini("المجمع",lastOf(h.id,"adm"))+mini("التعليمية",lastOf(h.id,"edu"))+'</div></a>'}).join(""):'<div class="empty">لا توجد حلقات بعد.<br>أضف حلقة ثم سجّل لها زيارات، وسيظهر سجل كل حلقة بشكل مستقل.</div>')+
- '<a class="btn" href="#hedit/new" style="margin-top:6px">إضافة حلقة</a></main>'}
+ return '<main>'+(hs.length?hs.map(function(h){var vs=visitsOf(h.id);return '<a class="card hi" href="#h/'+h.id+'"><div><b>'+esc(h.name)+'</b><br><small>'+esc(h.teacher)+(h.count?" · "+esc(h.count)+" طالب":"")+' · '+vs.length+' زيارة</small></div><div style="display:flex;gap:6px;align-items:center">'+(ak().indexOf("adm")>=0?mini("المجمع",lastOf(h.id,"adm")):"")+(ak().indexOf("edu")>=0?mini("التعليمية",lastOf(h.id,"edu")):"")+'</div></a>'}).join(""):'<div class="empty">لا توجد حلقات بعد.<br>أضف حلقة ثم سجّل لها زيارات، وسيظهر سجل كل حلقة بشكل مستقل.</div>')+
+ (can("hal")?'<a class="btn" href="#hedit/new" style="margin-top:6px">إضافة حلقة</a>':"")+'</main>'}
 
 function vHalaqa(id){var h=S.halaqat[id];if(!h)return '<main><div class="empty">الحلقة غير موجودة</div><a class="btn" href="#halaqat">رجوع</a></main>';
  var vs=visitsOf(id);
- var top='<div class="card"><h3 style="margin:0">'+esc(h.name)+'</h3><p style="margin:4px 0 12px;color:var(--mt);font-size:14px">المعلم: '+esc(h.teacher||"-")+' · الطلاب: '+esc(h.count||"-")+(h.note?'<br>'+esc(h.note):"")+'</p><div class="g2"><a class="btn" href="#new/'+id+'/adm">زيارة إدارة المجمع</a><a class="btn" href="#new/'+id+'/edu">زيارة الشؤون التعليمية</a></div><div class="g2" style="margin-top:10px"><button class="btn alt" data-act="rep" data-id="'+id+'">تقرير الحلقة</button><a class="btn alt" href="#hedit/'+id+'">تعديل الحلقة</a></div></div>';
- var secs=["adm","edu","old"].map(function(k){var kv=vs.filter(function(v){return kd(v)===k});if(!kv.length&&k==="old")return "";
+ var top='<div class="card"><h3 style="margin:0">'+esc(h.name)+'</h3><p style="margin:4px 0 12px;color:var(--mt);font-size:14px">المعلم: '+esc(h.teacher||"-")+' · الطلاب: '+esc(h.count||"-")+(h.note?'<br>'+esc(h.note):"")+'</p><div class="g2">'+ak().map(function(k){return '<a class="btn" href="#new/'+id+'/'+k+'">زيارة '+KINDS[k].n+'</a>'}).join("")+'</div><div class="g2" style="margin-top:10px"><button class="btn alt" data-act="rep" data-id="'+id+'">تقرير الحلقة</button>'+(can("hal")?'<a class="btn alt" href="#hedit/'+id+'">تعديل الحلقة</a>':"")+'</div></div>';
+ var secs=ak().concat(entOf(ME())==="both"?["old"]:[]).map(function(k){var kv=vs.filter(function(v){return kd(v)===k});if(!kv.length&&k==="old")return "";
   var ps=kv.map(vp),avg=ps.length?Math.round(sum(ps)/ps.length):0;
   return '<div class="card"><div class="hi"><h3 style="margin:0">'+KINDS[k].n+'</h3>'+(kv.length?'<small>المتوسط '+avg+'%</small>':"")+'</div>'+
   (kv.length?'<div class="bars">'+kv.slice(0,10).reverse().map(function(v){var p=vp(v);return '<div class="bar">'+Math.round(p)+'<i style="height:'+Math.max(p*.8,3)+'%;background:'+risk(p).c+'"></i></div>'}).join("")+'</div><div style="margin-top:10px">'+kv.map(function(v){var p=vp(v);return '<a href="#v/'+v.id+'" class="hi" style="text-decoration:none;color:inherit;padding:8px 0;border-top:1px solid var(--ln)"><div><b>'+fmt(v.date)+'</b><br><small>المشرف: '+esc(v.sup||"-")+' · '+risk(p).d+'</small></div>'+pcb(p)+'</a>'}).join("")+'</div>':'<div class="empty" style="padding:8px">لا توجد زيارات من '+KINDS[k].n+' لهذه الحلقة بعد</div>')+'</div>'}).join("");
@@ -315,11 +316,10 @@ function vHedit(id){var n=id==="new";if(!F.hid||F.hid!==id){F=n?{hid:id,id:uid()
  return '<main><div class="card"><h3>'+(n?"إضافة حلقة":"تعديل الحلقة")+'</h3><label class="f">اسم الحلقة</label><input type="text" data-f="name" value="'+esc(F.name)+'"><label class="f">اسم المعلم</label><input type="text" data-f="teacher" value="'+esc(F.teacher)+'"><label class="f">عدد الطلاب</label><input type="number" inputmode="numeric" min="0" data-f="count" value="'+esc(F.count)+'"><label class="f">ملاحظات (اختياري)</label><textarea rows="2" data-f="note">'+esc(F.note)+'</textarea><button class="btn" data-act="saveh">حفظ</button>'+(n?"":'<button class="btn del" style="margin-top:10px" data-act="delh" data-id="'+id+'">حذف الحلقة</button>')+'</div></main>'}
 
 function itemRow(i,val){return '<div class="it"><div class="q"><span>'+esc(i.t)+'</span><span class="v" id="v_'+i.id+'">'+val+'/'+i.max+'</span></div><input type="range" min="0" max="'+i.max+'" step="'+i.step+'" value="'+val+'" data-k="'+i.id+'" aria-label="'+esc(i.t)+'"></div>'}
-function vNew(hid,kind,sid){var hs=hList();if(!F.vid){F={vid:1,id:uid(),hid:hid||"",date:today(),sid:"",s:{},note:"",dec:"",te:"",kind:(kind==="adm"||kind==="edu")?kind:"",cfg:null};if(F.kind){F.cfg=cfgOf(F.kind);if(sid&&S.supervisors[sid]&&S.supervisors[sid].kind===F.kind)F.sid=sid}}
+function vNew(hid,kind,sid,tid){var hs=hList();if(!F.vid){var kk=ak().indexOf(kind)>=0?kind:(ak().length===1?ak()[0]:"");F={vid:1,id:uid(),hid:hid||"",date:today(),sid:ME().id,tid:tid||"",s:{},note:"",dec:"",te:"",kind:kk,cfg:null};if(kk)F.cfg=cfgOf(kk)}
  if(!hs.length)return '<main><div class="empty">أضف حلقة أولاً لتسجيل زيارة لها.</div><a class="btn" href="#hedit/new">إضافة حلقة</a></main>';
- var head='<div class="card"><h3>جهة التقييم</h3><div class="g2">'+["adm","edu"].map(function(k){return '<button class="btn'+(F.kind===k?"":" alt")+'" data-act="kind" data-k="'+k+'">'+KINDS[k].n+'</button>'}).join("")+'</div>'+(F.kind?"":'<div class="note" style="margin:10px 0 0">اختر الجهة التي تقيّم لها لتظهر بنود نموذجها.</div>')+'</div>';
- var sl=F.kind?sList(F.kind):[];
- var ssel='<label class="f">المشرف — '+(F.kind?KINDS[F.kind].n:"اختر الجهة أولاً")+'</label>'+(F.kind&&!sl.length?'<div class="note" style="margin:0 0 12px">لا يوجد مشرفون في '+KINDS[F.kind].n+' بعد. <a href="#sedit/new/'+F.kind+'" style="color:var(--g);font-weight:700">إضافة مشرف</a></div>':'<select data-f="sid"'+(F.kind?"":" disabled")+'><option value="">'+(F.kind?"اختر المشرف":"—")+'</option>'+sl.map(function(x){return '<option value="'+x.id+'"'+(x.id===F.sid?" selected":"")+'>'+esc(x.name)+'</option>'}).join("")+'</select>');
+ var head='<div class="card"><h3>جهة التقييم</h3><div class="g2">'+ak().map(function(k){return '<button class="btn'+(F.kind===k?"":" alt")+'" data-act="kind" data-k="'+k+'">'+KINDS[k].n+'</button>'}).join("")+'</div>'+(F.kind?"":'<div class="note" style="margin:10px 0 0">اختر الجهة التي تقيّم لها لتظهر بنود نموذجها.</div>')+'</div>';
+ var ssel='<label class="f">المشرف</label><div class="dfix">'+esc(ME().name)+'</div>';
  var info='<div class="card"><h3>بيانات الزيارة</h3><label class="f">الحلقة</label><select data-f="hid"><option value="">اختر الحلقة</option>'+hs.map(function(h){return '<option value="'+h.id+'"'+(h.id===F.hid?" selected":"")+'>'+esc(h.name)+' — '+esc(h.teacher)+'</option>'}).join("")+'</select>'+ssel+'<label class="f">تاريخ الزيارة (تلقائي — يوم الزيارة، لا يمكن تغييره)</label><div class="dfix">🔒 '+fmt(today())+'</div></div>';
  if(!F.kind)return '<main>'+head+info+'</main>';
  var r=calc(F.cfg,F.s),k=risk(r.pct);
@@ -335,50 +335,107 @@ function vResult(id){var v=S.visits[id];if(!v)return '<main><div class="empty">�
  sigH(kd(v))+'</div>'+
  '<div class="g2 noprint"><button class="btn alt" data-act="share" data-id="'+id+'">مشاركة</button><button class="btn alt" data-act="print" data-id="'+id+'">طباعة</button><button class="btn del" data-act="delv" data-id="'+id+'">حذف</button><a class="btn" href="#h/'+v.hid+'">سجل الحلقة</a></div></main>'}
 
-function vVisits(){var vs=allV().filter(function(v){return VF==="all"||kd(v)===VF});
- return '<main><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'+[["all","الكل"],["adm","إدارة المجمع"],["edu","الشؤون التعليمية"]].map(function(x){return '<button class="btn sm'+(VF===x[0]?"":" alt")+'" data-act="vf" data-k="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</div>'+
+function vVisits(){if(VF!=="all"&&ak().indexOf(VF)<0)VF="all";var vs=allV().filter(function(v){return VF==="all"||kd(v)===VF});
+ return '<main><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'+[["all","الكل"]].concat(ak().map(function(k){return[k,KINDS[k].n]})).map(function(x){return '<button class="btn sm'+(VF===x[0]?"":" alt")+'" data-act="vf" data-k="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</div>'+
  (vs.length?vs.map(function(v){var p=vp(v);return '<a class="card hi" href="#v/'+v.id+'"><div><b>'+esc(v.hn)+'</b> '+kb(kd(v))+'<br><small>'+fmt(v.date)+' · '+esc(v.sup||"-")+'</small></div>'+pcb(p)+'</a>'}).join(""):'<div class="empty">لا توجد زيارات بعد</div>')+'</main>'}
 
 function vSetup(){if(F.room===undefined)F={room:P.room||""};
  return '<main><div class="card"><h3>🔑 رقم الغرفة</h3><p class="note" style="margin-top:0">اكتب نفس الرقم في كل جهاز لتصيروا غرفة واحدة: نفس الحلقات والزيارات والبنود، وأي تعديل يصل للجميع مباشرة.</p><label class="f">رقم الغرفة</label><div class="row"><input type="text" inputmode="numeric" autocomplete="off" autocapitalize="off" maxlength="24" data-f="room" id="room" dir="ltr" value="'+esc(F.room)+'" placeholder="مثال: 482915"><button class="btn alt sm" data-act="gen" style="white-space:nowrap">رقم عشوائي</button></div><button class="btn" data-act="setup">دخول الغرفة</button></div></main>'}
 
-function vSettings(){return '<main><div class="card"><h3>الغرفة</h3><div class="hi"><span>رقم الغرفة</span><b>'+esc(P.room)+'</b></div><div class="hi"><span>الاتصال</span><b>'+esc(TXT||"-")+'</b></div><a class="btn alt" style="margin-top:12px" href="#setup">تغيير الغرفة</a></div>'+
- '<a class="card hi" href="#cfg"><div><b>تعديل بنود التقييم</b><br><small>إضافة وحذف وتعديل البنود والدرجات</small></div><span>‹</span></a>'+
- '<div class="card"><h3>تثبيت التطبيق</h3><p style="margin:0;color:var(--mt);font-size:14px">آيفون: Safari ← زر المشاركة ← «إضافة إلى الشاشة الرئيسية».<br>أندرويد: Chrome ← القائمة ⋮ ← «تثبيت التطبيق».</p></div></main>'}
-
-function vCfg(){var c=S.cfg;return '<main><p class="note">لكل جهة تقييم بنودها ودرجاتها الخاصة. التعديل يصل لكل المشرفين ويسري على الزيارات الجديدة فقط؛ الزيارات السابقة تحتفظ بنسختها.</p>'+
- '<div class="g2" style="margin-bottom:12px">'+["adm","edu"].map(function(k){return '<button class="btn'+(CK===k?"":" alt")+'" data-act="ck" data-k="'+k+'">'+KINDS[k].n+'</button>'}).join("")+'</div>'+
+function vCfg(){var c=S.cfg;if(ak().indexOf(CK)<0)CK=ak()[0];return '<main><p class="note">لكل جهة تقييم بنودها ودرجاتها الخاصة. التعديل يصل لكل المشرفين ويسري على الزيارات الجديدة فقط؛ الزيارات السابقة تحتفظ بنسختها.</p>'+
+ '<div class="g2" style="margin-bottom:12px">'+ak().map(function(k){return '<button class="btn'+(CK===k?"":" alt")+'" data-act="ck" data-k="'+k+'">'+KINDS[k].n+'</button>'}).join("")+'</div>'+
  c.sections.map(function(s,si){if(s.k!==CK)return "";return '<div class="card"><label class="f">عنوان القسم</label><input type="text" data-cs="'+si+'" data-cf="title" value="'+esc(s.title)+'"><label class="f">وصف (اختياري)</label><input type="text" data-cs="'+si+'" data-cf="note" value="'+esc(s.note)+'"><label style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><input type="checkbox" data-cs="'+si+'" data-cf="inPct"'+(s.inPct?" checked":"")+'> تدخل درجاته في النسبة النهائية</label>'+
  s.items.map(function(i,ii){return '<div class="row"><div style="flex:1"><input type="text" data-cs="'+si+'" data-ci="'+ii+'" data-cf="t" value="'+esc(i.t)+'"></div><div style="width:64px"><input type="number" inputmode="numeric" min="1" data-cs="'+si+'" data-ci="'+ii+'" data-cf="max" value="'+i.max+'" aria-label="الدرجة"></div><button class="btn del sm" data-act="di" data-si="'+si+'" data-ci="'+ii+'" aria-label="حذف البند">✕</button></div>'}).join("")+
  '<div class="g2"><button class="btn alt sm" data-act="ai" data-si="'+si+'">إضافة بند</button><button class="btn del sm" data-act="ds" data-si="'+si+'">حذف القسم</button></div></div>'}).join("")+
  '<button class="btn" data-act="as">إضافة قسم إلى '+KINDS[CK].n+'</button><button class="btn del" style="margin-top:10px" data-act="rc">استعادة البنود الأصلية</button></main>'}
 
 function avgOf(vs){var ps=vs.map(vp);return ps.length?Math.round(sum(ps)/ps.length):0}
-function vSups(){
- return '<main>'+["adm","edu"].map(function(k){var l=sList(k);return '<div class="card"><div class="hi" style="margin-bottom:6px"><h3 style="margin:0">'+KINDS[k].n+'</h3><a class="btn sm" href="#sedit/new/'+k+'">+ إضافة مشرف</a></div>'+
-  (l.length?l.map(function(x){var vs=visitsOfS(x);return '<a href="#s/'+x.id+'" class="hi" style="text-decoration:none;color:inherit;padding:10px 0;border-top:1px solid var(--ln)"><div><b>'+esc(x.name)+'</b><br><small>'+vs.length+' زيارة</small></div>'+(vs.length?pcb(avgOf(vs)):'<small>—</small>')+'</a>'}).join(""):'<div class="empty" style="padding:8px">لا يوجد مشرفون بعد</div>')+'</div>'}).join("")+'</main>'}
+/* ===== الصلاحيات والمشرفون والمهام ===== */
+var ROLES={exec:{n:"تنفيذ المهام فقط",c:{}},full:{n:"صلاحيات كاملة",c:{task:1,vtask:1,wtask:1,hal:1,sup:1}},mgr:{n:"إنشاء مهام وإشراف",c:{task:1,sup:1}}};
+var ENTN={adm:"إدارة المجمع",edu:"الشؤون التعليمية",both:"الجهتان معاً"},TYN={gen:"مهمة عامة",visit:"مهمة زيارة",write:"مهمة كتابية"},TK="mine";
+var SEED=[["s_jawad","جواد العنقري","exec"],["s_azizomran","عبدالعزيز العمران","exec"],["s_azizmkh","عبدالعزيز المخيمر","exec"],["s_rakan","راكان السلمان","full"],["s_azizrz","عبدالعزيز الرزقان","full"],["s_majed","ماجد العمران","full"],["s_karim","عبدالكريم المخيمر","mgr"]];
+function ME(){return S.supervisors[P.me]||null}
+function entOf(x){return x.ent||x.kind||"both"}
+function ak(){var m=ME(),e=m?entOf(m):"both";return e==="both"?["adm","edu"]:[e]}
+function can(c){var m=ME();return !!(m&&(ROLES[m.role]||ROLES.exec).c[c])}
+function vis(v){var m=ME();if(!m)return true;var k=kd(v);return k==="old"?entOf(m)==="both":ak().indexOf(k)>=0}
+function hp(id,p){var a=3735928559,b=1103547991,t=id+"|"+p;for(var i=0;i<t.length;i++){var c=t.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return "h"+(4294967296*(2097151&b)+(a>>>0)).toString(36)}
+function pwOk(x,p){return x.pw?x.pw===hp(x.id,p):p==="1111"}
+function seed(){SEED.forEach(function(d){var k="supervisors/"+d[0];if(M[k])return;var ex=null;Object.keys(S.supervisors).forEach(function(i){var x=S.supervisors[i];if(x&&x.name===d[1])ex=x});if(ex&&ex.role)return;
+ var o=ex?Object.assign({},ex,{role:d[2],ent:ex.kind||"both"}):{id:d[0],name:d[1],role:d[2],ent:"both",pw:hp(d[0],"1111")};if(!o.pw)o.pw=hp(o.id,"1111");
+ M[ex?"supervisors/"+ex.id:k]={v:o,ts:ex?Date.now():1}});saveM()}
+function bdg(x){return '<span class="kb adm">'+ROLES[x.role||"exec"].n+'</span> <span class="kb old">'+ENTN[entOf(x)]+'</span>'}
+function tList(){return Object.keys(S.tasks).map(function(k){return S.tasks[k]}).filter(Boolean).sort(function(a,b){return b.ts-a.ts})}
+function isMine(t){return arr(t.to).indexOf(P.me)>=0}
+function doneOf(t,s){return t.done&&t.done[s]}
+function pendingN(){return tList().filter(function(t){return isMine(t)&&!doneOf(t,P.me)}).length}
+function tbadge(t){return '<span class="kb '+(t.type==="visit"?"edu":t.type==="write"?"wt":"adm")+'">'+TYN[t.type]+'</span>'}
+function taskCard(){var n=pendingN();return '<a class="card hi" href="#tasks"><div><b>مهامي</b><br><small>'+(n?n+" مهمة بانتظار التنفيذ":"لا توجد مهام معلّقة")+'</small></div><span style="color:'+(n?"var(--or)":"var(--mt)")+';font-weight:800;font-size:20px">'+n+'</span></a>'}
+function taskRow(t){var me=isMine(t),dn=me&&doneOf(t,P.me),a=arr(t.to),pg=a.filter(function(x){return doneOf(t,x)}).length+"/"+a.length;return '<a class="card hi" href="#t/'+t.id+'"><div>'+tbadge(t)+' <b>'+esc(t.title)+'</b><br><small>'+(t.hn?esc(t.hn)+' · ':"")+'من '+esc(t.byn||"-")+(t.due?' · الموعد '+fmt(t.due):"")+'</small></div><span style="font-weight:700;white-space:nowrap;color:'+(me?(dn?"var(--ok)":"var(--or)"):"var(--mt)")+'">'+(me?(dn?"منفّذة ✓":"قيد التنفيذ"):pg)+'</span></a>'}
+
+function vLogin(){var l=Object.keys(S.supervisors).map(function(k){return S.supervisors[k]}).filter(Boolean).sort(function(a,b){return a.name>b.name?1:-1});
+ return '<main><div class="card"><h3>تسجيل الدخول</h3><label class="f">المشرف</label><select data-f="lid"><option value="">اختر اسمك</option>'+l.map(function(x){return '<option value="'+x.id+'"'+(x.id===F.lid?" selected":"")+'>'+esc(x.name)+'</option>'}).join("")+'</select><label class="f">كلمة المرور</label><input type="password" data-f="lpw" autocomplete="current-password" value="'+esc(F.lpw||"")+'"><button class="btn" data-act="login">دخول</button><a class="btn alt" style="margin-top:10px" href="#setup">تغيير الغرفة</a></div></main>'}
+
+function vSettings(){var m=ME();return '<main><div class="card"><h3>حسابي</h3><div class="hi"><span>الاسم</span><b>'+esc(m.name)+'</b></div><div class="hi"><span>الصلاحية</span><b>'+ROLES[m.role||"exec"].n+'</b></div><div class="hi"><span>الجهة</span><b>'+ENTN[entOf(m)]+'</b></div></div>'+
+ '<div class="card"><h3>تغيير كلمة المرور</h3><label class="f">كلمة المرور الحالية</label><input type="password" data-f="op" autocomplete="current-password"><label class="f">كلمة المرور الجديدة (٤ خانات على الأقل)</label><input type="password" data-f="np" autocomplete="new-password"><label class="f">تأكيد كلمة المرور الجديدة</label><input type="password" data-f="cp" autocomplete="new-password"><button class="btn" data-act="cpw">حفظ كلمة المرور</button></div>'+
+ (can("hal")?'<a class="card hi" href="#cfg"><div><b>تعديل بنود التقييم</b><br><small>إضافة وحذف وتعديل البنود والدرجات</small></div><span>‹</span></a>':"")+
+ '<div class="card"><h3>الغرفة</h3><div class="hi"><span>رقم الغرفة</span><b>'+esc(P.room)+'</b></div><div class="hi"><span>الاتصال</span><b>'+esc(TXT||"-")+'</b></div><a class="btn alt" style="margin-top:12px" href="#setup">تغيير الغرفة</a></div>'+
+ '<div class="card"><h3>تثبيت التطبيق</h3><p style="margin:0;color:var(--mt);font-size:14px">آيفون: Safari ← زر المشاركة ← «إضافة إلى الشاشة الرئيسية».<br>أندرويد: Chrome ← القائمة ⋮ ← «تثبيت التطبيق».</p></div><button class="btn del" data-act="logout">تسجيل الخروج</button></main>'}
+
+function avgOf(vs){var ps=vs.map(vp);return ps.length?Math.round(sum(ps)/ps.length):0}
+function vSups(){var l=Object.keys(S.supervisors).map(function(k){return S.supervisors[k]}).filter(function(x){return x&&(entOf(x)==="both"||ak().indexOf(entOf(x))>=0)}).sort(function(a,b){return a.name>b.name?1:-1});
+ return '<main><div class="card"><div class="hi" style="margin-bottom:6px"><h3 style="margin:0">المشرفون</h3><a class="btn sm" href="#sedit/new">+ إضافة مشرف</a></div>'+
+ (l.length?l.map(function(x){var vs=visitsOfS(x);return '<a href="#s/'+x.id+'" class="hi" style="text-decoration:none;color:inherit;padding:10px 0;border-top:1px solid var(--ln)"><div><b>'+esc(x.name)+'</b><br>'+bdg(x)+'</div>'+(vs.length?pcb(avgOf(vs)):'<small>—</small>')+'</a>'}).join(""):'<div class="empty" style="padding:8px">لا يوجد مشرفون بعد</div>')+'</div></main>'}
 
 function vSup(id){var x=S.supervisors[id];if(!x)return '<main><div class="empty">المشرف غير موجود</div><a class="btn" href="#sups">رجوع</a></main>';
  var vs=visitsOfS(x),last=vs[0];
- return '<main><div class="card"><div class="hi"><h3 style="margin:0">'+esc(x.name)+'</h3>'+kb(x.kind)+'</div><div class="g2" style="margin-top:12px"><a class="btn" href="#new//'+x.kind+'/'+id+'">زيارة جديدة</a><a class="btn alt" href="#sedit/'+id+'">تعديل</a></div></div>'+
+ return '<main><div class="card"><h3 style="margin:0 0 8px">'+esc(x.name)+'</h3>'+bdg(x)+'<a class="btn alt" style="margin-top:12px" href="#sedit/'+id+'">تعديل المشرف وكلمة المرور</a></div>'+
  '<div class="g3" style="margin-bottom:12px"><div class="card stat"><b>'+vs.length+'</b><span>زيارة</span></div><div class="card stat"><b>'+(vs.length?avgOf(vs)+'%':'—')+'</b><span>متوسط ما قيّمه</span></div><div class="card stat"><b style="font-size:15px">'+(last?fmt(last.date):'—')+'</b><span>آخر زيارة</span></div></div>'+
- (vs.length?'<div class="card"><h3>تقييماته السابقة</h3><div class="bars">'+vs.slice(0,10).reverse().map(function(v){var p=vp(v);return '<div class="bar">'+Math.round(p)+'<i style="height:'+Math.max(p*.8,3)+'%;background:'+risk(p).c+'"></i></div>'}).join("")+'</div><div style="margin-top:10px">'+
-  vs.map(function(v){var p=vp(v);return '<a href="#v/'+v.id+'" class="hi" style="text-decoration:none;color:inherit;padding:8px 0;border-top:1px solid var(--ln)"><div><b>'+esc(v.hn)+'</b><br><small>'+fmt(v.date)+' · '+risk(p).d+'</small></div>'+pcb(p)+'</a>'}).join("")+'</div></div>':'<div class="card empty">لا توجد تقييمات لهذا المشرف بعد</div>')+'</main>'}
+ (vs.length?'<div class="card"><h3>تقييماته السابقة</h3><div style="margin-top:10px">'+vs.map(function(v){var p=vp(v);return '<a href="#v/'+v.id+'" class="hi" style="text-decoration:none;color:inherit;padding:8px 0;border-top:1px solid var(--ln)"><div><b>'+esc(v.hn)+'</b><br><small>'+fmt(v.date)+' · '+risk(p).d+'</small></div>'+pcb(p)+'</a>'}).join("")+'</div></div>':'<div class="card empty">لا توجد تقييمات لهذا المشرف بعد</div>')+'</main>'}
 
-function vSedit(id,kind){var n=id==="new";if(!F.sk||F.sk!==id){F=n?{sk:id,id:uid(),name:"",kind:(kind==="adm"||kind==="edu")?kind:""}:Object.assign({sk:id},S.supervisors[id]||{})}
- return '<main><div class="card"><h3>'+(n?"إضافة مشرف":"تعديل المشرف")+'</h3><label class="f">الجهة</label><div class="g2" style="margin-bottom:12px">'+["adm","edu"].map(function(k){return '<button class="btn'+(F.kind===k?"":" alt")+'" data-act="skind" data-k="'+k+'">'+KINDS[k].n+'</button>'}).join("")+'</div><label class="f">اسم المشرف</label><input type="text" data-f="name" value="'+esc(F.name)+'"><button class="btn" data-act="saves">حفظ</button>'+(n?"":'<button class="btn del" style="margin-top:10px" data-act="dels" data-id="'+id+'">حذف المشرف</button><p class="note" style="margin:10px 0 0">الحذف لا يمسح زياراته السابقة من السجل.</p>')+'</div></main>'}
+function vSedit(id){var n=id==="new";if(!F.sk||F.sk!==id){var o=S.supervisors[id]||{};F=n?{sk:id,id:uid(),name:"",ent:"both",role:"exec",pw:""}:{sk:id,id:id,name:o.name||"",ent:entOf(o),role:o.role||"exec",pw:""}}
+ return '<main><div class="card"><h3>'+(n?"إضافة مشرف":"تعديل المشرف")+'</h3><label class="f">اسم المشرف</label><input type="text" data-f="name" value="'+esc(F.name)+'">'+
+ '<label class="f">الجهة (لا يرى المشرف إلا القسم التابع له)</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'+["adm","edu","both"].map(function(k){return '<button class="btn sm'+(F.ent===k?"":" alt")+'" data-act="sent" data-k="'+k+'">'+ENTN[k]+'</button>'}).join("")+'</div>'+
+ '<label class="f">الصلاحية</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'+["exec","mgr","full"].map(function(k){return '<button class="btn sm'+(F.role===k?"":" alt")+'" data-act="srole" data-k="'+k+'">'+ROLES[k].n+'</button>'}).join("")+'</div>'+
+ '<label class="f">'+(n?"كلمة المرور (٤ خانات على الأقل)":"كلمة مرور جديدة (اتركها فارغة بدون تغيير)")+'</label><input type="text" data-f="pw" autocomplete="off" dir="ltr" value="'+esc(F.pw)+'"><p class="note" style="margin-top:-6px">يستطيع المشرف تغيير كلمة المرور من «حسابي».</p><button class="btn" data-act="ssave">حفظ</button>'+(n||id===P.me?"":'<button class="btn del" style="margin-top:10px" data-act="sdel" data-id="'+id+'">حذف المشرف</button>')+'</div></main>'}
+
+function vTasks(){var l=tList(),mine=l.filter(isMine),all=TK==="all"&&can("task");
+ return '<main>'+(can("task")?'<div style="display:flex;gap:8px;margin-bottom:12px">'+[["mine","مسندة إليّ"],["all","كل المهام"]].map(function(x){return '<button class="btn sm'+(TK===x[0]?"":" alt")+'" data-act="tf" data-k="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</div>':"")+
+ ((all?l:mine).length?(all?l:mine).map(taskRow).join(""):'<div class="empty">لا توجد مهام</div>')+(can("task")?'<a class="btn" href="#tedit/new" style="margin-top:6px">+ مهمة جديدة</a>':"")+'</main>'}
+
+function vTask(id){var t=S.tasks[id];if(!t)return '<main><div class="empty">المهمة غير موجودة</div><a class="btn" href="#tasks">رجوع</a></main>';
+ var me=isMine(t),d=me&&doneOf(t,P.me),to=arr(t.to),M_=ME();
+ var h='<main><div class="card"><div class="hi">'+tbadge(t)+'<small>'+fmt(ymd(new Date(t.ts)))+'</small></div><h3 style="margin:8px 0 4px">'+esc(t.title)+'</h3>'+(t.desc?'<p style="margin:0 0 8px">'+esc(t.desc)+'</p>':"")+'<p class="note" style="margin:0">من: '+esc(t.byn||"-")+(t.hn?' · الحلقة: '+esc(t.hn):"")+(t.kind?' · '+KINDS[t.kind].n:"")+(t.due?' · الموعد: '+fmt(t.due):"")+'</p></div>';
+ if(me){if(d)h+='<div class="card"><b style="color:var(--ok)">✓ تم التنفيذ</b>'+(d.note?'<p style="margin:8px 0 0">'+esc(d.note)+'</p>':"")+(d.vid?'<a class="btn alt" style="margin-top:10px" href="#v/'+d.vid+'">عرض الزيارة</a>':"")+(t.type!=="visit"?'<button class="btn alt" style="margin-top:10px" data-act="tundo" data-id="'+id+'">تراجع</button>':"")+'</div>';
+  else if(t.type==="visit")h+='<div class="card"><a class="btn" href="#new/'+t.hid+'/'+t.kind+'//'+id+'">ابدأ الزيارة</a></div>';
+  else h+='<div class="card"><label class="f">'+(t.type==="write"?"اكتب المطلوب":"ملاحظة (اختياري)")+'</label><textarea rows="4" data-f="tnote"></textarea><button class="btn" data-act="tdone" data-id="'+id+'">'+(t.type==="write"?"إرسال":"تم التنفيذ")+'</button></div>'}
+ if(t.by===P.me||can("task"))h+='<div class="card"><h3>المسندة إليهم ('+to.filter(function(x){return doneOf(t,x)}).length+'/'+to.length+')</h3>'+to.map(function(x){var s=S.supervisors[x],dn=doneOf(t,x);return '<div style="padding:8px 0;border-top:1px solid var(--ln)"><div class="hi"><b>'+esc(s?s.name:"—")+'</b><span style="font-weight:700;color:'+(dn?"var(--ok)":"var(--or)")+'">'+(dn?"✓ "+fmt(ymd(new Date(dn.ts))):"لم تُنفّذ")+'</span></div>'+(dn&&dn.note?'<p style="margin:4px 0 0;color:var(--mt);font-size:14px;white-space:pre-wrap">'+esc(dn.note)+'</p>':"")+(dn&&dn.vid?'<a href="#v/'+dn.vid+'" style="color:var(--g);font-weight:700;font-size:14px">عرض الزيارة</a>':"")+'</div>'}).join("")+'</div>';
+ if(t.by===P.me||(M_&&M_.role==="full"))h+='<button class="btn del" data-act="tdel" data-id="'+id+'">حذف المهمة</button>';
+ return h+'</main>'}
+
+function vTedit(){if(!F.tk)F={tk:1,id:uid(),type:"gen",title:"",desc:"",hid:"",kind:ak().length===1?ak()[0]:"",due:"",to:[]};
+ var types=[["gen","مهمة عامة","task"],["visit","مهمة زيارة","vtask"],["write","مهمة كتابية","wtask"]].filter(function(x){return can(x[2])});if(!types.some(function(x){return x[0]===F.type}))F.type=types[0][0];
+ var hs=hList(),sl=Object.keys(S.supervisors).map(function(k){return S.supervisors[k]}).filter(function(x){return x&&(entOf(x)==="both"||ak().indexOf(entOf(x))>=0)}).sort(function(a,b){return a.name>b.name?1:-1});
+ return '<main><div class="card"><h3>مهمة جديدة</h3><label class="f">نوع المهمة</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'+types.map(function(x){return '<button class="btn sm'+(F.type===x[0]?"":" alt")+'" data-act="ttype" data-k="'+x[0]+'">'+x[1]+'</button>'}).join("")+'</div>'+
+ '<label class="f">العنوان'+(F.type==="gen"?"":" (اختياري)")+'</label><input type="text" data-f="title" value="'+esc(F.title)+'"><label class="f">التفاصيل (اختياري)</label><textarea rows="3" data-f="desc">'+esc(F.desc)+'</textarea>'+
+ (F.type!=="gen"?'<label class="f">الحلقة المستهدفة</label><select data-f="hid"><option value="">اختر الحلقة</option>'+hs.map(function(h){return '<option value="'+h.id+'"'+(h.id===F.hid?" selected":"")+'>'+esc(h.name)+' — '+esc(h.teacher)+'</option>'}).join("")+'</select>':"")+
+ (F.type==="visit"?'<label class="f">جهة الزيارة</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'+ak().map(function(k){return '<button class="btn sm'+(F.kind===k?"":" alt")+'" data-act="tkind" data-k="'+k+'">'+KINDS[k].n+'</button>'}).join("")+'</div>':"")+
+ '<label class="f">الموعد (اختياري)</label><input type="date" data-f="due" value="'+esc(F.due)+'"><label class="f">إسناد إلى</label>'+
+ sl.map(function(x){return '<label style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><input type="checkbox" data-as="'+x.id+'"'+(F.to.indexOf(x.id)>=0?" checked":"")+'> '+esc(x.name)+(x.id===P.me?" (أنا)":"")+'</label>'}).join("")+'<button class="btn" style="margin-top:8px" data-act="tsave">إنشاء المهمة</button></div></main>'}
 
 /* ===== التوجيه ===== */
 function render(){R=(location.hash||"#home").slice(1).split("/");var r=R[0];
  if(!P.room&&r!=="setup"){location.hash="#setup";return}
+ if(P.room&&r!=="setup"){if(!ME()){if(r!=="login"){location.hash="#login";return}}else{if(r==="login"){location.hash="#home";return}
+  var nd={hedit:"hal",cfg:"hal",sedit:"sup",sups:"sup",s:"sup",tedit:"task"}[r];if(nd&&!can(nd)){location.hash="#home";return}}}
  var h;
- if(r==="setup")h=vSetup();else if(r==="halaqat")h=vHalaqat();else if(r==="h")h=vHalaqa(R[1]);else if(r==="hedit")h=vHedit(R[1]);else if(r==="new")h=vNew(R[1],R[2],R[3]);else if(r==="sups")h=vSups();else if(r==="s")h=vSup(R[1]);else if(r==="sedit")h=vSedit(R[1],R[2]);else if(r==="v")h=vResult(R[1]);else if(r==="visits")h=vVisits();else if(r==="reports")h=vReports();else if(r==="settings")h=vSettings();else if(r==="cfg")h=vCfg();else h=vHome();
+ if(r==="setup")h=vSetup();else if(r==="halaqat")h=vHalaqat();else if(r==="h")h=vHalaqa(R[1]);else if(r==="hedit")h=vHedit(R[1]);else if(r==="new")h=vNew(R[1],R[2],R[3],R[4]);else if(r==="sups")h=vSups();else if(r==="s")h=vSup(R[1]);else if(r==="sedit")h=vSedit(R[1],R[2]);else if(r==="v")h=vResult(R[1]);else if(r==="visits")h=vVisits();else if(r==="reports")h=vReports();else if(r==="settings")h=vSettings();else if(r==="cfg")h=vCfg();else if(r==="login")h=vLogin();else if(r==="tasks")h=vTasks();else if(r==="t")h=vTask(R[1]);else if(r==="tedit")h=vTedit();else h=vHome();
  V.innerHTML=h;
- var tab={s:"sups",sedit:"sups",h:"halaqat",hedit:"halaqat",v:"visits",new:"home",cfg:"settings",setup:"settings"}[r]||r;
+ var tab={s:"sups",sedit:"sups",h:"halaqat",hedit:"halaqat",v:"visits",new:"home",cfg:"settings",setup:"settings",login:"settings",t:"tasks",tedit:"tasks"}[r]||r;
  document.querySelectorAll("#tabs a").forEach(function(a){a.className=a.dataset.t===tab?"on":""});
- setSt(ST);document.getElementById("tabs").style.display=r==="setup"?"none":"";
+ setSt(ST);document.getElementById("tabs").style.display=(r==="setup"||r==="login")?"none":"";var st=document.querySelector("#tabs a[data-t=sups]");if(st)st.style.display=can("sup")?"":"none";
 }
-window.addEventListener("hashchange",function(){var r=location.hash.slice(1).split("/")[0];if(r!=="new"&&r!=="hedit"&&r!=="sedit"&&r!=="setup")F={};window.scrollTo(0,0);render()});
+window.addEventListener("hashchange",function(){var r=location.hash.slice(1).split("/")[0];if(r!=="new"&&r!=="hedit"&&r!=="sedit"&&r!=="setup"&&r!=="tedit"&&r!=="login")F={};window.scrollTo(0,0);render()});
 
 /* ===== تقرير للطباعة / حفظ PDF (نافذة مستقلة، يعمل على الآيفون) ===== */
 function reportHTML(v){
@@ -410,6 +467,7 @@ function printReport(id){var v=S.visits[id];if(!v)return;
 function live(){var r=calc(F.cfg,F.s),k=risk(r.pct);document.getElementById("sum").textContent=Math.round(r.pct)+"%";document.getElementById("sg").textContent=r.got+"/"+r.max;var e=document.getElementById("rk");e.textContent=k.d;e.style.color=k.c;r.secs.forEach(function(s){var x=document.getElementById("sc_"+s.id);if(x)x.textContent=s.g+"/"+s.m})}
 document.addEventListener("input",function(e){var d=e.target.dataset;
  if(d.k){F.s[d.k]=+e.target.value;var it=null;F.cfg.sections.forEach(function(c){c.items.forEach(function(i){if(i.id===d.k)it=i})});document.getElementById("v_"+d.k).textContent=e.target.value+"/"+it.max;live()}
+ else if(d.as!==undefined){F.to=F.to||[];var ix=F.to.indexOf(d.as);if(e.target.checked){if(ix<0)F.to.push(d.as)}else if(ix>=0)F.to.splice(ix,1)}
  else if(d.f){F[d.f]=e.target.value}});
 document.addEventListener("change",function(e){var d=e.target.dataset;
  if(d.rf!==undefined){RF[d.rf]=e.target.value;render();return}
@@ -418,7 +476,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("[data-act]
  if(x==="gen"){var r=String(Math.floor(100000+Math.random()*900000));F.room=r;document.getElementById("room").value=r}
  else if(x==="setup"){var rm=(F.room||"").replace(/[\u0660-\u0669]/g,function(c){return c.charCodeAt(0)-1632}).trim().toLowerCase().replace(/[^a-z0-9_-]/g,"");
   if(rm.length<4){toast("رقم الغرفة ٤ خانات على الأقل (أرقام أو إنجليزي)");return}
-  P.room=rm;lsSet();F={};startSync();location.hash="#home";render();toast("تم الدخول")}
+  P.room=rm;P.me="";lsSet();F={};startSync();location.hash="#home";render();toast("تم الدخول")}
   else if(x==="kind"){if(F.kind!==d.k){F.kind=d.k;F.cfg=cfgOf(d.k);F.s={};F.te="";F.sid="";render()}}
   else if(x==="skind"){F.kind=d.k;render()}
   else if(x==="saves"){if(!(F.name||"").trim()){toast("اكتب اسم المشرف");return}if(!F.kind){toast("اختر الجهة");return}var so={id:F.id,name:F.name.trim(),kind:F.kind};w("supervisors/"+so.id,so);F={};location.hash="#s/"+so.id}
@@ -427,9 +485,9 @@ document.addEventListener("click",function(e){var a=e.target.closest("[data-act]
   else if(x==="ck"){CK=d.k;render()}
   else if(x==="saveh"){if(!(F.name||"").trim()){toast("اكتب اسم الحلقة");return}var o={id:F.id,name:F.name.trim(),teacher:(F.teacher||"").trim(),count:F.count,note:F.note||""};w("halaqat/"+o.id,o);F={};location.hash="#h/"+o.id}
  else if(x==="delh"){ask("حذف الحلقة؟ ستبقى زياراتها في السجل العام.",function(){w("halaqat/"+d.id,null);F={};location.hash="#halaqat"})}
- else if(x==="savev"){if(!F.kind){toast("اختر جهة التقييم");return}var h=S.halaqat[F.hid];if(!h){toast("اختر الحلقة");return}var sp=S.supervisors[F.sid];if(!sp||sp.kind!==F.kind){toast("اختر المشرف");return}var s={};F.cfg.sections.forEach(function(c){c.items.forEach(function(i){s[i.id]=+F.s[i.id]||0})});
+ else if(x==="savev"){if(!F.kind){toast("اختر جهة التقييم");return}var h=S.halaqat[F.hid];if(!h){toast("اختر الحلقة");return}var sp=ME();if(!sp||ak().indexOf(F.kind)<0){toast("غير مسموح");return}var s={};F.cfg.sections.forEach(function(c){c.items.forEach(function(i){s[i.id]=+F.s[i.id]||0})});
   var v={id:F.id,kind:F.kind,hid:F.hid,hn:h.name,ht:h.teacher,hc:h.count||"",date:today(),sup:sp.name,sid:sp.id,s:s,note:F.note,dec:F.dec,te:F.kind==="adm"?F.te:"",cfg:JSON.parse(JSON.stringify(F.cfg)),ts:Date.now()};
-  w("visits/"+v.id,v);F={};location.hash="#v/"+v.id;toast("تم حفظ الزيارة")}
+  w("visits/"+v.id,v);var tt=S.tasks[F.tid];if(tt){tt=JSON.parse(JSON.stringify(tt));tt.done=tt.done||{};tt.done[sp.id]={ts:Date.now(),vid:v.id};w("tasks/"+tt.id,tt)}F={};location.hash="#v/"+v.id;toast("تم حفظ الزيارة")}
  else if(x==="delv"){ask("حذف هذه الزيارة نهائياً؟",function(){var hid=S.visits[d.id].hid;w("visits/"+d.id,null);location.hash="#h/"+hid})}
   else if(x==="rq"){var td=today();if(d.k==="month"){RF.from=td.slice(0,8)+"01";RF.to=td}else if(d.k==="30"){var q=new Date();q.setDate(q.getDate()-29);RF.from=ymd(q);RF.to=td}else{RF.from="";RF.to=""}render()}
   else if(x==="rep"){RF.h=d.id;location.hash="#reports"}
@@ -442,6 +500,26 @@ document.addEventListener("click",function(e){var a=e.target.closest("[data-act]
  else if(x==="ds"){ask("حذف القسم وكل بنوده؟",function(){S.cfg.sections.splice(+d.si,1);w("cfg",S.cfg);render()})}
  else if(x==="as"){S.cfg.sections.push({id:"s"+uid(),k:CK,title:"قسم جديد",note:"",inPct:true,items:[{id:"i"+uid(),t:"بند جديد",max:4,step:1}]});w("cfg",S.cfg);render()}
  else if(x==="rc"){ask("استعادة البنود الأصلية للجميع؟",function(){S.cfg=nc(defCfg());w("cfg",S.cfg);render()})}
+});
+
+document.addEventListener("click",function(e){var a=e.target.closest("[data-act]");if(!a)return;var d=a.dataset,x=d.act,m=ME();
+ if(x==="login"){var sp=S.supervisors[F.lid];if(!sp){toast("اختر اسمك");return}if(!pwOk(sp,F.lpw||"")){toast("كلمة المرور غير صحيحة");return}P.me=sp.id;lsSet();F={};location.hash="#home";render()}
+ else if(x==="logout"){P.me="";lsSet();F={};location.hash="#login";render()}
+ else if(x==="cpw"){if(!pwOk(m,F.op||"")){toast("كلمة المرور الحالية غير صحيحة");return}if((F.np||"").length<4){toast("كلمة المرور الجديدة ٤ خانات على الأقل");return}if(F.np!==F.cp){toast("التأكيد غير مطابق");return}w("supervisors/"+m.id,Object.assign({},m,{pw:hp(m.id,F.np)}));F={};render();toast("تم تغيير كلمة المرور")}
+ else if(x==="sent"){F.ent=d.k;render()}
+ else if(x==="srole"){F.role=d.k;render()}
+ else if(x==="ssave"){if(!can("sup"))return;var nm=(F.name||"").trim(),isN=F.sk==="new",pw=(F.pw||"").trim();if(!nm){toast("اكتب اسم المشرف");return}if((isN||pw)&&pw.length<4){toast("كلمة المرور ٤ خانات على الأقل");return}
+  var o=Object.assign({},S.supervisors[F.id]||{},{id:F.id,name:nm,ent:F.ent,role:F.role});delete o.kind;if(pw)o.pw=hp(F.id,pw);if(isN)o.by=m.id;w("supervisors/"+o.id,o);F={};location.hash="#s/"+o.id;toast("تم الحفظ")}
+ else if(x==="sdel"){if(d.id===P.me)return;ask("حذف المشرف؟ تبقى زياراته في السجل.",function(){w("supervisors/"+d.id,null);F={};location.hash="#sups"})}
+ else if(x==="tf"){TK=d.k;render()}
+ else if(x==="ttype"){F.type=d.k;render()}
+ else if(x==="tkind"){F.kind=d.k;render()}
+ else if(x==="tsave"){var ty=F.type,hh=S.halaqat[F.hid];if(!can({gen:"task",visit:"vtask",write:"wtask"}[ty]))return;if(ty!=="gen"&&!hh){toast("اختر الحلقة المستهدفة");return}if(ty==="visit"&&ak().indexOf(F.kind)<0){toast("اختر جهة الزيارة");return}
+  var ti=(F.title||"").trim()||(ty==="visit"?"زيارة "+hh.name:ty==="write"?"مهمة كتابية — "+hh.name:"");if(!ti){toast("اكتب عنوان المهمة");return}if(!(F.to||[]).length){toast("اختر من تُسند إليه المهمة");return}
+  var t={id:F.id,type:ty,title:ti,desc:(F.desc||"").trim(),hid:hh?hh.id:"",hn:hh?hh.name:"",kind:ty==="visit"?F.kind:"",to:F.to.slice(),by:m.id,byn:m.name,due:F.due||"",ts:Date.now(),done:{}};w("tasks/"+t.id,t);F={};location.hash="#t/"+t.id;toast("تم إنشاء المهمة")}
+ else if(x==="tdone"){var t1=S.tasks[d.id];if(!t1||!isMine(t1))return;if(t1.type==="write"&&!(F.tnote||"").trim()){toast("اكتب النص المطلوب");return}t1=JSON.parse(JSON.stringify(t1));t1.done=t1.done||{};t1.done[m.id]={ts:Date.now(),note:(F.tnote||"").trim()};w("tasks/"+t1.id,t1);F={};render();toast("تم التنفيذ")}
+ else if(x==="tundo"){var t2=S.tasks[d.id];if(!t2)return;t2=JSON.parse(JSON.stringify(t2));if(t2.done)delete t2.done[m.id];w("tasks/"+t2.id,t2);render()}
+ else if(x==="tdel"){ask("حذف المهمة نهائياً؟",function(){w("tasks/"+d.id,null);location.hash="#tasks"})}
 });
 
 if("serviceWorker" in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(function(){});
