@@ -277,7 +277,7 @@ function periodHTML(){
  '.sig{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;text-align:center;margin-top:44px;break-inside:avoid}.sig div{border-top:1px solid #333;padding-top:6px}'+
  '.bar{position:sticky;top:0;background:#1d5a39;color:#fff;padding:10px;text-align:center;margin:-18px -18px 14px}.bar button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:8px 18px;background:#b8923a;color:#111}'+
  '@media print{.bar{display:none}body{padding:0}}</style></head><body>'+
- '<div class="bar"><button onclick="window.print()">طباعة / حفظ PDF</button><div style="font-size:12px;margin-top:6px">آيفون: زر المشاركة ← «طباعة» أو «حفظ في الملفات»</div></div>'+
+ '<div class="bar"><button onclick="window.print()">طباعة / حفظ PDF</button> <button style="background:#fff;margin-inline-start:8px" onclick="try{window.close()}catch(e){}setTimeout(function(){history.back()},250)">رجوع</button><div style="font-size:12px;margin-top:6px">آيفون: زر المشاركة ← «طباعة» أو «حفظ في الملفات»</div></div>'+
  '<h1>تقرير متوسطات جودة الحلقات</h1><p class="s">الجمعية الخيرية لتحفيظ القرآن الكريم في جلاجل</p>'+
  '<div class="box"><b>النطاق:</b> '+scope+'<br><b>الفترة:</b> '+perLabel()+'<br><b>تاريخ إصدار التقرير:</b> '+fmt(today())+'</div>'+
  '<div class="box" style="text-align:center"><div class="big">'+p1(avg)+'</div>متوسط '+vs.length+' زيارة'+(isAll?' · '+byH(vs,false).length+' حلقة':'')+' · <b style="color:'+k.c+'">'+k.t+' — '+k.d+'</b></div>'+
@@ -479,7 +479,7 @@ function docHTML(title,body){return '<!DOCTYPE html><html lang="ar" dir="rtl"><h
  '.sig{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;text-align:center;margin-top:44px;break-inside:avoid}.sig div{border-top:1px solid #333;padding-top:6px}'+
  '.bar{position:sticky;top:0;background:#1d5a39;color:#fff;padding:10px;text-align:center;margin:-18px -18px 14px}.bar button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:8px 18px;background:#b8923a;color:#111}'+
  '@media print{.bar{display:none}body{padding:0}}</style></head><body>'+
- '<div class="bar"><button onclick="window.print()">طباعة / حفظ PDF</button><div style="font-size:12px;margin-top:6px">آيفون: زر المشاركة ← «طباعة» أو «حفظ في الملفات»</div></div>'+
+ '<div class="bar"><button onclick="window.print()">طباعة / حفظ PDF</button> <button style="background:#fff;margin-inline-start:8px" onclick="try{window.close()}catch(e){}setTimeout(function(){history.back()},250)">رجوع</button><div style="font-size:12px;margin-top:6px">آيفون: زر المشاركة ← «طباعة» أو «حفظ في الملفات»</div></div>'+
  '<h1>'+esc(title)+'</h1><p class="s">الجمعية الخيرية لتحفيظ القرآن الكريم في جلاجل</p>'+body+'<div class="sig"><div>مُصدر التقرير<br>'+esc(ME().name)+'</div><div>'+GM+'</div></div></body></html>'}
 function supDocBody(){var l=supsVis(),info='<div class="box"><b>الفترة:</b> '+sPer()+'<br><b>تاريخ إصدار التقرير:</b> '+fmt(today())+'<br><b>أصدره:</b> '+esc(ME().name)+'</div>';
  if(SR.s==="all"){return{t:"تقرير نشاط المشرفين",b:info+'<table class="t"><tr><th>م</th><th>المشرف</th><th>الزيارات</th><th>متوسط ما قيّمه</th><th>مهام أُسندت</th><th>منفّذة</th><th>غير منفّذة</th><th>متأخرة</th></tr>'+l.map(supStat).map(function(z,i){return '<tr><td class="n">'+(i+1)+'</td><td>'+esc(z.x.name)+'</td><td class="n">'+z.vs.length+'</td><td class="n">'+p1(z.avg)+'</td><td class="n">'+z.asg.length+'</td><td class="n">'+z.dn.length+'</td><td class="n">'+z.op.length+'</td><td class="n">'+z.lt.length+'</td></tr>'}).join("")+'</table>'}}
@@ -546,7 +546,7 @@ function reportHTML(v){
  '.sig{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:12px;text-align:center;margin-top:40px}.sig div{border-top:1px solid #333;padding-top:6px}'+
  '.bar{position:sticky;top:0;background:#1d5a39;color:#fff;padding:10px;text-align:center;margin:-18px -18px 14px}.bar button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:8px 18px;background:#b8923a;color:#111}'+
  '@media print{.bar{display:none}body{padding:0}}</style></head><body>'+
- '<div class="bar"><button onclick="window.print()">طباعة / حفظ PDF</button><div style="font-size:12px;margin-top:6px">آيفون: زر المشاركة ← «طباعة» أو «حفظ في الملفات»</div></div>'+
+ '<div class="bar"><button onclick="window.print()">طباعة / حفظ PDF</button> <button style="background:#fff;margin-inline-start:8px" onclick="try{window.close()}catch(e){}setTimeout(function(){history.back()},250)">رجوع</button><div style="font-size:12px;margin-top:6px">آيفون: زر المشاركة ← «طباعة» أو «حفظ في الملفات»</div></div>'+
  '<h1>اعتماد جودة الحلقات — '+KINDS[kd(v)].n+'</h1><p class="s">الجمعية الخيرية لتحفيظ القرآن الكريم في جلاجل</p>'+
  '<div class="box"><b>الحلقة:</b> '+esc(v.hn)+' · <b>المعلم:</b> '+esc(v.ht||"-")+' · <b>الطلاب:</b> '+esc(v.hc||"-")+'<br><b>التاريخ:</b> '+fmt(v.date)+' · <b>المشرف:</b> '+esc(v.sup||"-")+'</div>'+
  '<div class="box" style="text-align:center"><div class="big">'+Math.round(r.pct)+'%</div>'+r.got+' من '+r.max+' · <b style="color:'+k.c+'">'+k.t+' — '+k.d+'</b></div>'+
